@@ -106,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'Asia/Shanghai'
 
@@ -127,7 +127,7 @@ STATIC_URL = '/static/'
 REGISTRATION_OPEN = True
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/accounts/profile/'
 LOGIN_URL = '/accounts/login/'
 REGISTRATION_DEFAULT_FROM_EMAIL = 'bifrost_xin@163.com'
 EMAIL_HOST = 'smtp.163.com'
