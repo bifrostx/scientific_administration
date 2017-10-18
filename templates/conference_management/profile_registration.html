@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title_block %}填写用户信息{% endblock %}
+
+{% block body_block %}
+<h2 class="form-signin-heading">填写用户信息</h2>
+    <form method="post" action=".">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="提交" />
+    </form>
+{% endblock %}
+

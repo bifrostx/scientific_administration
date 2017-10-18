@@ -1,15 +1,7 @@
 {% extends "base.html" %}
 
+{% block title_block %}激活失败{% endblock %}
+
 {% block body_block %}
-<p>Account activation failed.</p>
+<p>激活失败</p>
 {% endblock %}
-
-
-{% comment %}
-**registration/activate.html**
-
-Used if account activation fails. With the default setup, has the following context:
-
-``activation_key``
-    The activation key used during the activation attempt.
-{% endcomment %}

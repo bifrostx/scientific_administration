@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+{% block title_block %}注册{% endblock %}
+
 {% block body_block %}
-<h1>Registration</h1>
+<h1>注册</h1>
 <form role="form" id="book_form" method="post"
           action="." enctype="multipart/form-data">
         {% csrf_token %}
