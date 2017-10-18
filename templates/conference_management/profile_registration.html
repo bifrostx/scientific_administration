@@ -1,14 +1,15 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
 {% load staticfiles %}
 
 {% block title_block %}填写用户信息{% endblock %}
 
 {% block body_block %}
 <h2 class="form-signin-heading">填写用户信息</h2>
-    <form method="post" action=".">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="提交" />
-    </form>
+<form role="form" id="book_form" method="post" action=".">
+    {% csrf_token %}
+    {% include 'includes/bs4_form.html' with form=form %}
+    <button type="submit" class="btn btn-primary" name="submit">提交</button>
+</form>
 {% endblock %}
 

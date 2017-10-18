@@ -6,17 +6,9 @@
 {% block body_block %}
 <h1>注册</h1>
 <form role="form" id="book_form" method="post"
-          action="." enctype="multipart/form-data">
+          action="." enctype="multipart/form-data", novalidate>
         {% csrf_token %}
-        {% for field in form %}
-            {% if field.errors %}
-                <div class="alert alert-danger" role="alert">{{ field.errors }}</div>
-            {% endif %}
-            {{ field.label_tag }}
-            <input class="form-control" type="{{ field.field.widget.input_type}}" name="{{ field.name }}" id="{{ field.id_for_label }}">
-            <div class="help">{{ field.help_text | safe }}</div>
-    {% endfor %}
-        <br />
-        <button type="submit" class="btn btn-primary" name="submit">Register</button>
+        {% include 'includes/bs4_form.html' with form=form %}
+        <button type="submit" class="btn btn-primary" name="submit">注册</button>
     </form>
 {% endblock %}

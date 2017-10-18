@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'conference_management',
     'registration',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
