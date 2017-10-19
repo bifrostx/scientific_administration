@@ -5,9 +5,11 @@
     <link href="{% static 'css/signin.css' %}" rel="stylesheet">
 {% endblock%}
 
+{% block title_block %}登入{% endblock %}
+
 {% block body_block %}
 <div class="jumbotron">
-    <h1 align="center">Login</h1>
+    <h1 align="center">账号登入</h1>
 <form class="form-signin" method="post" action="">
     {% csrf_token %}
     {% for field in form %}
@@ -18,13 +20,13 @@
         <input class="form-control" type="{{ field.field.widget.input_type}}" name="{{ field.name }}" id="{{ field.id_for_label }}">
     {% endfor %}
     {% if form.errors %}
-        <div class="alert alert-danger" role="alert">Invalid username or password! Please try again.</div>
+        <div class="alert alert-danger" role="alert">错误的用户名或密码</div>
     {% endif %}
     <br />
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
     <input type="hidden" name="next" value="{{ next }}" />
-    <p>Forgot your password? <a href="{% url 'auth_password_reset' %}">Reset it</a>.<br />
-        Not a member? <a href="{% url 'registration_register' %}">Register</a>.</p>
+    <p>忘记密码？<a href="{% url 'auth_password_reset' %}">重置</a><br />
+        没有账号？<a href="{% url 'registration_register' %}">注册</a></p>
 </form>
 </div>
 {% endblock %}

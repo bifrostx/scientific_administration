@@ -9,7 +9,7 @@ def index(request):
     return HttpResponse("Please implement your index page.")
 
 
-def register_profile(request):
+def user_profile(request):
     form = UserProfileForm()
 
     if request.method == 'POST':

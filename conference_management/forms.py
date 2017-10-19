@@ -1,10 +1,8 @@
 # -*- coding:utf-8 -*-
-from django.db import models
-from django.contrib.auth.models import User
-from django.utils import timezone
+from django import forms
+from .models import UserProfile
 
 
-# Create your models here.
 DEPT_CHOICES = (
         ('HWL', '核物理研究室'),
         ('WSW', '物理生物学研究室'),
@@ -52,39 +50,15 @@ DEPT_CHOICES = (
         ('FZZ', '辐照中心'),
 
     )
-class UserProfile(models.Model):
-
-    user = models.OneToOneField(User,
-                                on_delete=models.CASCADE,
-                                primary_key=True,)
-
-    cellphone = models.CharField(max_length=15,
-                                 verbose_name="手机号码",)
-    department = models.CharField(max_length=3,
-                                  verbose_name="所属部门",
-                                  choices=DEPT_CHOICES,
-    )
-
-    def __str__(self):
-        return self.user.username
 
 
-class Conference(models.Model):
-    name = models.CharField(max_length=100, verbose_name="会议名称")
-    department = models.CharField(max_length=3,
-                                  verbose_name="所属部门",
-                                  choices=DEPT_CHOICES,
-    )
-    applicant = models.ForeignKey(User, verbose_name="申请人")
-    reason = models.CharField(max_length=200, verbose_name="申请原因")
-    chair = models.CharField(max_length=30, verbose_name="会议负责人")
-    start_date = models.DateField(verbose_name="会议开始时间")
-    end_date = models.DateField(verbose_name="会议结束时间")
-    place = models.CharField(max_length=30, verbose_name="会议地点")
-    scale = models.IntegerField()
-    source = models.CharField(max_length=45, verbose_name="课题卡号")
-    note = models.CharField(max_length=200, verbose_name="说明")
+class UserProfileForm(forms.ModelForm):
 
-    def __str__(self):
-        return self.name
+    last_name = forms.CharField(max_length=30, label="姓")
+    first_name = forms.CharField(max_length=30, label="名")
+    department = forms.CharField(max_length=3, label="所属部门", widget=forms.Select(choices=DEPT_CHOICES))
+    cellphone = forms.CharField(max_length=15, label="手机号码")
 
+    class Meta:
+        model = UserProfile
+        fields = ('last_name', 'first_name', 'cellphone', 'department')
